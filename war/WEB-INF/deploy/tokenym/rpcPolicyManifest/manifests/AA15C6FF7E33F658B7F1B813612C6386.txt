@@ -1,0 +1,2 @@
+serviceClass: tokenym.client.TokenymService
+path: 10900246948D2798209926EC0CF4FFBB.gwt.rpc

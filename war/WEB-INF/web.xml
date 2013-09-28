@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+   <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>tokenymServlet</servlet-name>
+    <servlet-class>tokenym.server.TokenymServiceImpl</servlet-class>
+  </servlet>
+  
+    <servlet>
+  <servlet-name>IdService</servlet-name>
+  <servlet-class>tokenym.server.IdService</servlet-class>
+  </servlet>
+  
+  <servlet>
+  <servlet-name>TokenService</servlet-name>
+  <servlet-class>tokenym.server.TokenService</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>tokenymServlet</servlet-name>
+    <url-pattern>/tokenym/greet</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+  <servlet-name>IdService</servlet-name>
+  <url-pattern>/IDService</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  <servlet-name>TokenService</servlet-name>
+  <url-pattern>/TokenService</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Tokenym.html</welcome-file>
+  </welcome-file-list>
+
+  <servlet>
+    <servlet-name>SystemServiceServlet</servlet-name>
+    <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+    <init-param>
+      <param-name>services</param-name>
+      <param-value/>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>SystemServiceServlet</servlet-name>
+    <url-pattern>/_ah/spi/*</url-pattern>
+  </servlet-mapping>
+
+</web-app>
